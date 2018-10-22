@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <head th:replace ="layout/layout :: head"></head>
+
+<body>
+    <header th:replace="layout/layout :: header"></header>
+    <div>
+        <h1>USUARIO AÑADIDO</h1>
+        <h1>USER:</h1></br>
+        <h2>User <span th:text="${user.user}"></span></h2>
+        <h2>Pass <span th:text="${user.pass}"></span></h2>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
