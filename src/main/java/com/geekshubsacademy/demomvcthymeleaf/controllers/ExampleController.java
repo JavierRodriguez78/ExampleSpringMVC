@@ -1,6 +1,9 @@
 package com.geekshubsacademy.demomvcthymeleaf.controllers;
 
 import com.geekshubsacademy.demomvcthymeleaf.models.User;
+import com.geekshubsacademy.demomvcthymeleaf.services.EjemploService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,11 @@ import java.util.List;
 
 @Controller
 public class ExampleController {
+
+    @Autowired
+    @Qualifier("EjemploService")
+    private EjemploService ejemploService;
+
 
     @GetMapping("/")
     public String inicio(Model model)
@@ -39,8 +47,8 @@ public class ExampleController {
     public ModelAndView dataList()
     {
         ModelAndView mav = new ModelAndView("list");
-        mav.addObject("Users",getUsers());
-        int result = 5/0;
+        mav.addObject("Users",ejemploService.getListUsers());
+        //int result = 5/0;
         return mav;
     }
 
@@ -50,12 +58,4 @@ public class ExampleController {
         return "layoutExample";
     }
 
-    private List<User> getUsers(){
-        List<User> users = new ArrayList<>();
-        users.add(new User("Xavi","pass"));
-        users.add(new User("Alice","pass"));
-        users.add(new User("Leon","pass"));
-        users.add(new User("Nemesis","pass"));
-        return  users;
-    }
 }
